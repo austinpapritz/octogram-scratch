@@ -1,7 +1,17 @@
 import { getProfileById } from '../fetch-utils.js';
 
+const image = document.querySelector('#avatar-image');
+const usernameHeader = document.querySelector('.username-h2');
+const profileDetail = document.querySelector('.profile-detail');
+const params = new URLSearchParams(location.search);
+const id = params.get('id');
+
 window.addEventListener('load', async () => {
-    const params = new URLSearchParams(location.search);
-    const id = params.get('id');
-    const profileInfo = await getProfileById(id);
+    displayProfile();
 });
+
+async function displayProfile() {
+    profileDetail.textContent = '';
+    const profile = await getProfileById(id);
+    usernameHeader.textContent = profile.username;
+}
