@@ -3,9 +3,9 @@
 import './auth/user.js';
 
 /* Get DOM Elements */
-
+const profileList = document.querySelector('#profile-list');
 /* State */
 
 /* Events */
-
+window.addEventListener('load', async () => {});
 /* Display Functions */
