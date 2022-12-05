@@ -6,7 +6,7 @@ export function renderProfiles(profile) {
     linkA.classList.add('card');
     // imgEl.classList.add('avatar');
 
-    linkA.href = `../profile/?id=${profile.id}`;
+    linkA.href = `../profiles/?id=${profile.id}`;
     imgEl.src = profile.avatar_url;
     imgEl.alt = 'avatar';
     usernameP.textContent = `${profile.username}`;
