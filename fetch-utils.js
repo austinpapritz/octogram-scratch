@@ -32,3 +32,9 @@ export async function getProfiles() {
     const response = await client.from('profiles').select('*');
     return response;
 }
+
+export async function getProfileById(id) {
+    const response = await client.from('profiles').select('*').match({ id }).single();
+    console.log(response);
+    return response;
+}
