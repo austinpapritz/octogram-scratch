@@ -2,6 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 import { getProfiles } from './fetch-utils.js';
+import { renderProfiles } from './render-utils.js';
 
 /* Get DOM Elements */
 const profileList = document.querySelector('#profile-list');
@@ -9,6 +10,12 @@ const profileList = document.querySelector('#profile-list');
 
 /* Events */
 window.addEventListener('load', async () => {
-    await getProfiles();
+    const profiles = await getProfiles();
+
+    for (let profile of profiles.data) {
+        console.log(profile, 'profile object');
+        const profileEl = renderProfiles(profile);
+        profileList.append(profileEl);
+    }
 });
 /* Display Functions */

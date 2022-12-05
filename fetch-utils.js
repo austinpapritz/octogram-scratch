@@ -30,6 +30,5 @@ export async function signOutUser() {
 /* Data functions */
 export async function getProfiles() {
     const response = await client.from('profiles').select('*');
-    console.log(response);
     return response;
 }
