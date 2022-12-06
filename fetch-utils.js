@@ -81,7 +81,11 @@ export async function createNewUser(user, url) {
 }
 
 // need to match user_id to the user logged in. Use getUser().id to get user id
-export async function upsertBio(bio, id) {
-    const response = await client.from('profiles').update({ bio: bio }).match({ id }).single();
+export async function upsertBio(profileObject, id) {
+    const response = await client
+        .from('profiles')
+        .update({ bio: profileObject.bio, avatar_url: profileObject.avatar_url })
+        .match({ id })
+        .single();
     return response;
 }

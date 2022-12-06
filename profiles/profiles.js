@@ -69,15 +69,24 @@ bioForm.addEventListener('submit', async (e) => {
     const bio = formData.get('bio');
     const avatar = formData.get('avatar');
 
+    const profileObject = {
+        bio: bio,
+    };
+
     if (avatar.size) {
         const imagePath = `${user.id}/${avatar.name}`;
         const url = await uploadImage(imagePath, avatar);
 
-        // profileObject.avatar_url = url;
-        // await createNewUser(profileObject, url);
+        profileObject.avatar_url = url;
+    } else {
+        const profileinfo = await getProfileById(id);
+        profileObject.avatar_url = profileinfo.data.avatar_url;
     }
 
-    await upsertBio(bio, id, url);
+    console.log(profileObject.avatar_url, 'avatar url');
+
+    await upsertBio(profileObject, id);
+    //send profileObject to upsertBio
     bioForm.reset();
     await displayProfile();
 });
