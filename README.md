@@ -6,7 +6,6 @@ https://zgixhmlshitskkemwyaf.supabase.co/storage/v1/object/public/avatars/324881
 
 ## New Plan
 
-    - render avatars
     - upvote/downvote functionality (all users)
     - edit profile for user viewing own profile
         - edit bio input

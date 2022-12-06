@@ -7,9 +7,11 @@ export function renderProfiles(profile) {
     // imgEl.classList.add('avatar');
 
     linkA.href = `../profiles/?id=${profile.id}`;
+
+    imgEl.classList.add('avatar-home');
     imgEl.src = profile.avatar_url;
-    console.log(profile.avatar_url, 'testing');
     imgEl.alt = 'avatar';
+
     usernameP.textContent = `${profile.username}`;
 
     linkA.append(imgEl, usernameP);
