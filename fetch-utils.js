@@ -37,3 +37,14 @@ export async function getProfileById(id) {
     const response = await client.from('profiles').select('*').match({ id }).single();
     return response;
 }
+
+export async function incrementStars(id) {
+    const profile = await getProfileById(id);
+
+    const response = await client
+        .from('profiles')
+        .update({ stars: profile.stars + 1 })
+        .match({ id });
+    console.log(response);
+    return response;
+}

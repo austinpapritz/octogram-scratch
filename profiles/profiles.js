@@ -1,4 +1,4 @@
-import { getProfileById } from '../fetch-utils.js';
+import { getProfileById, incrementStars } from '../fetch-utils.js';
 
 const avatarImg = document.querySelector('#avatar-image');
 const usernameHeader = document.querySelector('.username-h2');
@@ -14,6 +14,7 @@ window.addEventListener('load', async () => {
 
 async function displayProfile() {
     profileDetail.textContent = '';
+    starsDiv.textContent = '';
     const profile = await getProfileById(id);
 
     usernameHeader.textContent = profile.data.username;
@@ -42,12 +43,12 @@ function renderStars({ stars, username, id }) {
 
     // downButton.addEventListener('click', async () => {
     //     await decrementStars(id);
-    //     await fetchAndDisplayProfile();
+    //     await displayProfile();
     // });
-    // upButton.addEventListener('click', async () => {
-    //     await incrementStars(id);
-    //     await fetchAndDisplayProfile();
-    // });
+    upButton.addEventListener('click', async () => {
+        await incrementStars(id);
+        await displayProfile();
+    });
 
     return profileStars;
 }
