@@ -67,13 +67,17 @@ export async function uploadImage(imagePath, imageFile) {
         // we want to replace and existing file with same name
         upsert: true,
     });
-    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+    console.log(response, 'uploadimage respose');
+    const url = `${SUPABASE_URL}/storage/v1/avatars/public/${response.data.Key}`;
     return url;
 }
 
-export async function createNewUser(user) {
-    const response = await client
-        .from('profiles')
-        .insert({ user_id: client.auth.user().id, username: user.username, bio: user.bio });
+export async function createNewUser(user, url) {
+    const response = await client.from('profiles').insert({
+        user_id: client.auth.user().id,
+        username: user.username,
+        bio: user.bio,
+        avatar_url: url,
+    });
     return response;
 }

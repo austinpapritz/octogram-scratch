@@ -10,12 +10,12 @@ usernameForm.addEventListener('submit', async (e) => {
         username: username.get('username'),
         bio: username.get('bio'),
     };
-    // const imageFile = usernameForm.get('avatar');
-    // if (imageFile.size) {
-    //     const imagePath = `${user.id}/${imageFile.name}`;
-    //     const url = await uploadImage(imagePath, imageFile);
-    //     profileObject.avatar_url = url;
-    // }
 
-    await createNewUser(profileObject);
+    const imageFile = username.get('avatar');
+    if (imageFile.size) {
+        const imagePath = `${username.id}/${imageFile.name}`;
+        const url = await uploadImage(imagePath, imageFile);
+        profileObject.avatar_url = url;
+        await createNewUser(profileObject, url);
+    }
 });
