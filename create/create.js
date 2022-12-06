@@ -1,4 +1,4 @@
-import { uploadImage } from '../fetch-utils.js';
+import { createNewUser, uploadImage } from '../fetch-utils.js';
 
 const usernameForm = document.querySelector('#profile-form');
 
@@ -16,4 +16,6 @@ usernameForm.addEventListener('submit', async (e) => {
     //     const url = await uploadImage(imagePath, imageFile);
     //     profileObject.avatar_url = url;
     // }
+
+    await createNewUser(profileObject);
 });

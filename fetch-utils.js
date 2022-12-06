@@ -68,6 +68,12 @@ export async function uploadImage(imagePath, imageFile) {
         upsert: true,
     });
     const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
-    console.log(url, 'url');
     return url;
+}
+
+export async function createNewUser(user) {
+    const response = await client
+        .from('profiles')
+        .insert({ user_id: client.auth.user().id, username: user.username, bio: user.bio });
+    return response;
 }
