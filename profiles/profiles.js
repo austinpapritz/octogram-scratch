@@ -60,6 +60,6 @@ bioForm.addEventListener('submit', async (e) => {
     const formData = new FormData(bioForm);
     const bio = formData.get('bio');
     await upsertBio(bio, id);
-    bioForm.reset;
+    bioForm.reset();
     await displayProfile();
 });
