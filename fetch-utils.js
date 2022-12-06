@@ -43,7 +43,7 @@ export async function incrementStars(id) {
 
     const response = await client
         .from('profiles')
-        .update({ stars: profile.stars + 1 })
+        .update({ stars: profile.data.stars + 1 })
         .match({ id });
     console.log(response);
     return response;
