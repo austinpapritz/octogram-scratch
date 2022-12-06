@@ -48,3 +48,14 @@ export async function incrementStars(id) {
     console.log(response);
     return response;
 }
+
+export async function decrementStars(id) {
+    const profile = await getProfileById(id);
+
+    const response = await client
+        .from('profiles')
+        .update({ stars: profile.data.stars - 1 })
+        .match({ id });
+    console.log(response);
+    return response;
+}
