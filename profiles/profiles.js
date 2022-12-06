@@ -83,9 +83,7 @@ bioForm.addEventListener('submit', async (e) => {
         profileObject.avatar_url = profileinfo.data.avatar_url;
     }
 
-    console.log(profileObject.avatar_url, 'avatar url');
-
-    await upsertBio(profileObject, id);
+    await upsertBio(profileObject, id, getUser());
     //send profileObject to upsertBio
     bioForm.reset();
     await displayProfile();
