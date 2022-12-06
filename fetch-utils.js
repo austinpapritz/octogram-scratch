@@ -69,7 +69,7 @@ export async function uploadImage(imagePath, imageFile) {
     });
     console.log(response);
     console.log(response, 'uploadimage respose');
-    const url = `${SUPABASE_URL}/storage/v1/avatars/public/${response.data.Key}`;
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
     return url;
 }
 

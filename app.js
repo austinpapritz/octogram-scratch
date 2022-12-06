@@ -13,6 +13,7 @@ window.addEventListener('load', async () => {
     const profiles = await getProfiles();
 
     for (let profile of profiles.data) {
+        console.log(profile);
         const profileEl = renderProfiles(profile);
         profileList.append(profileEl);
     }

@@ -2,6 +2,17 @@
 
 ![](/assets/wireframe.png)
 
+https://zgixhmlshitskkemwyaf.supabase.co/storage/v1/object/public/avatars/32488156-c401-4c8b-a6d2-8e9b9f395c10/headshot18.png
+
+## New Plan
+
+    - render avatars
+    - upvote/downvote functionality (all users)
+    - edit profile for user viewing own profile
+        - edit bio input
+        - upload new avatar
+        - update user function in fetch utils
+
 ## Plan
 
     - Table in Supabase connected to auth table

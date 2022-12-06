@@ -8,6 +8,7 @@ export function renderProfiles(profile) {
 
     linkA.href = `../profiles/?id=${profile.id}`;
     imgEl.src = profile.avatar_url;
+    console.log(profile.avatar_url, 'testing');
     imgEl.alt = 'avatar';
     usernameP.textContent = `${profile.username}`;
 
