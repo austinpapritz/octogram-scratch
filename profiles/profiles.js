@@ -1,4 +1,10 @@
-import { decrementStars, getProfileById, incrementStars, upsertBio } from '../fetch-utils.js';
+import {
+    decrementStars,
+    getProfileById,
+    getUser,
+    incrementStars,
+    upsertBio,
+} from '../fetch-utils.js';
 
 const avatarImg = document.querySelector('#avatar-image');
 const usernameHeader = document.querySelector('.username-h2');
