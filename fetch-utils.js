@@ -56,7 +56,6 @@ export async function decrementStars(id) {
         .from('profiles')
         .update({ stars: profile.data.stars - 1 })
         .match({ id });
-    console.log(response);
     return response;
 }
 
@@ -67,8 +66,6 @@ export async function uploadImage(imagePath, imageFile) {
         // we want to replace and existing file with same name
         upsert: true,
     });
-    console.log(response);
-    console.log(response, 'uploadimage respose');
     const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
     return url;
 }
@@ -86,6 +83,5 @@ export async function createNewUser(user, url) {
 // need to match user_id to the user logged in. Use getUser().id to get user id
 export async function upsertBio(bio, id) {
     const response = await client.from('profiles').update({ bio: bio }).match({ id }).single();
-    console.log(response, 'response bio');
     return response;
 }
