@@ -59,3 +59,15 @@ export async function decrementStars(id) {
     console.log(response);
     return response;
 }
+
+export async function uploadImage(imagePath, imageFile) {
+    const bucket = client.storage.from('avatars');
+    const response = await bucket.upload(imagePath, imageFile, {
+        cacheControl: '3600',
+        // we want to replace and existing file with same name
+        upsert: true,
+    });
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+    console.log(url, 'url');
+    return url;
+}
