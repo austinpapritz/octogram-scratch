@@ -82,3 +82,9 @@ export async function createNewUser(user, url) {
     });
     return response;
 }
+
+export async function upsertBio(bio, id) {
+    const response = await client.from('profiles').update({ bio: bio }).match({ id }).single();
+    console.log(response, 'response bio');
+    return response;
+}

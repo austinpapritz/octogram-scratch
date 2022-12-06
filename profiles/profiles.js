@@ -1,9 +1,10 @@
-import { decrementStars, getProfileById, incrementStars } from '../fetch-utils.js';
+import { decrementStars, getProfileById, incrementStars, upsertBio } from '../fetch-utils.js';
 
 const avatarImg = document.querySelector('#avatar-image');
 const usernameHeader = document.querySelector('.username-h2');
 const profileDetail = document.querySelector('.profile-detail');
 const starsDiv = document.querySelector('.stars-div');
+const bioForm = document.querySelector('#bio-form');
 
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
@@ -53,3 +54,12 @@ function renderStars({ stars, username, id }) {
 
     return profileStars;
 }
+
+bioForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(bioForm);
+    const bio = formData.get('bio');
+    await upsertBio(bio, id);
+    bioForm.reset;
+    await displayProfile();
+});
