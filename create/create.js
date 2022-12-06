@@ -1,6 +1,8 @@
-import { createNewUser, uploadImage } from '../fetch-utils.js';
+import { createNewUser, getUser, uploadImage } from '../fetch-utils.js';
 
 const usernameForm = document.querySelector('#profile-form');
+
+const user = getUser();
 
 usernameForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ usernameForm.addEventListener('submit', async (e) => {
 
     const imageFile = username.get('avatar');
     if (imageFile.size) {
-        const imagePath = `${username.id}/${imageFile.name}`;
+        const imagePath = `${user.id}/${imageFile.name}`;
         const url = await uploadImage(imagePath, imageFile);
         profileObject.avatar_url = url;
         await createNewUser(profileObject, url);

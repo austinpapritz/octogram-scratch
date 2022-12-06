@@ -67,6 +67,7 @@ export async function uploadImage(imagePath, imageFile) {
         // we want to replace and existing file with same name
         upsert: true,
     });
+    console.log(response);
     console.log(response, 'uploadimage respose');
     const url = `${SUPABASE_URL}/storage/v1/avatars/public/${response.data.Key}`;
     return url;
