@@ -7,7 +7,6 @@ https://zgixhmlshitskkemwyaf.supabase.co/storage/v1/object/public/avatars/324881
 ## New Plan
 
     - edit profile for user viewing own profile
-        - edit bio input
         - upload new avatar
         - update user function in fetch utils
 
