@@ -18,6 +18,8 @@ const id = params.get('id');
 const user = getUser();
 
 window.addEventListener('load', async () => {
+    //if user_id from getUser() is same as user_id from getProfileById
+    //bioForm.classList.remove('hidden');
     displayProfile();
 });
 

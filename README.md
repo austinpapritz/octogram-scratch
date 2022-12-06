@@ -2,13 +2,13 @@
 
 ![](/assets/wireframe.png)
 
+![](/assets/table.png)
+
 https://zgixhmlshitskkemwyaf.supabase.co/storage/v1/object/public/avatars/32488156-c401-4c8b-a6d2-8e9b9f395c10/headshot18.png
 
 ## New Plan
 
-    - edit profile for user viewing own profile
-        - upload new avatar
-        - update user function in fetch utils
+    - edit button only shows if user_id matches the user
 
 ## Plan
 
