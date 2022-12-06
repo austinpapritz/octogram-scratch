@@ -1,6 +1,6 @@
 import { getProfileById } from '../fetch-utils.js';
 
-const image = document.querySelector('#avatar-image');
+const avatarImg = document.querySelector('#avatar-image');
 const usernameHeader = document.querySelector('.username-h2');
 const profileDetail = document.querySelector('.profile-detail');
 const params = new URLSearchParams(location.search);
@@ -13,5 +13,8 @@ window.addEventListener('load', async () => {
 async function displayProfile() {
     profileDetail.textContent = '';
     const profile = await getProfileById(id);
-    usernameHeader.textContent = profile.username;
+
+    usernameHeader.textContent = profile.data.username;
+    avatarImg.src = profile.data.avatar_url;
+    profileDetail.textContent = profile.data.bio;
 }
