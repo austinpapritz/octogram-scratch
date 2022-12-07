@@ -4,8 +4,6 @@ export function renderProfiles(profile) {
     const usernameP = document.createElement('p');
 
     linkA.classList.add('card');
-    // imgEl.classList.add('avatar');
-
     linkA.href = `../profiles/?id=${profile.id}`;
 
     imgEl.classList.add('avatar-home');
@@ -13,6 +11,7 @@ export function renderProfiles(profile) {
     imgEl.alt = 'avatar';
 
     usernameP.textContent = `${profile.username}`;
+    usernameP.classList.add('username-home');
 
     linkA.append(imgEl, usernameP);
     return linkA;

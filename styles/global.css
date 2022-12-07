@@ -15,7 +15,7 @@ body {
     height: 100vh;
     font-family: var(--primary-font);
     color: var(--text-color);
-    background: var(--background);
+    background: url('/assets/background.jpg');
     display: grid;
     grid-template-rows: auto 1fr;
 }
@@ -51,6 +51,9 @@ body {
 
 main {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .avatar {
@@ -61,10 +64,6 @@ main {
     border-radius: 100%;
 }
 
-.avatar-home {
-    width: 300px;
-}
-
 .error {
     min-height: 1em;
     color: red;
@@ -72,4 +71,53 @@ main {
 
 .hidden {
     display: none;
+}
+
+#profile-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-list a {
+    text-decoration: none;
+}
+
+.card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px;
+    padding: 1rem 2rem;
+    border: double gold 8px;
+    border-radius: 1rem;
+    background: rgb(105, 203, 214, 0.85);
+    box-shadow: 0 1px 5px rgb(7, 5, 68, 0.75), 0 1px 3px rgb(7, 5, 68, 0.75);
+}
+
+.card:hover {
+    background: rgb(77, 132, 252);
+}
+.avatar-home {
+    height: 75px;
+    max-width: 150px;
+    margin-right: 5px;
+    border: solid rgb(7, 5, 68) 3px;
+    border-radius: 0.5rem;
+}
+
+.username-home {
+    color: rgb(7, 5, 68);
+    font-size: 2rem;
+}
+
+#avatar-image {
+    height: 500px;
+    max-width: 1000px;
+}
+
+#user-h1 {
+    font-size: 5rem;
+    text-decoration: underline;
+    color: white;
+    margin: 5px;
 }
