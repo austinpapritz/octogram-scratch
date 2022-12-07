@@ -75,10 +75,15 @@ bioForm.addEventListener('submit', async (e) => {
     const formData = new FormData(bioForm);
     const bio = formData.get('bio');
     const avatar = formData.get('avatar');
+    const profileinfo = await getProfileById(id);
 
-    const profileObject = {
-        bio: bio,
-    };
+    const profileObject = {};
+
+    if (bio === '') {
+        profileObject.bio = profileinfo.data.bio;
+    } else {
+        profileObject.bio = bio;
+    }
 
     if (avatar.size) {
         const imagePath = `${user.id}/${avatar.name}`;
@@ -86,7 +91,6 @@ bioForm.addEventListener('submit', async (e) => {
 
         profileObject.avatar_url = url;
     } else {
-        const profileinfo = await getProfileById(id);
         profileObject.avatar_url = profileinfo.data.avatar_url;
     }
 

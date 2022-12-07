@@ -11,6 +11,7 @@ usernameForm.addEventListener('submit', async (e) => {
     const profileObject = {
         username: username.get('username'),
         bio: username.get('bio'),
+        user_id: user.id,
     };
 
     const imageFile = username.get('avatar');
@@ -21,5 +22,5 @@ usernameForm.addEventListener('submit', async (e) => {
         const newuser = await upsertNewUser(profileObject);
         console.log(newuser, 'newuser');
     }
-    // location.replace('../');
+    location.replace('../');
 });
