@@ -3,8 +3,8 @@ import {
     getProfileById,
     getUser,
     incrementStars,
+    updateBio,
     uploadImage,
-    upsertBio,
 } from '../fetch-utils.js';
 
 const avatarImg = document.querySelector('#avatar-image');
@@ -16,8 +16,6 @@ const bioForm = document.querySelector('#bio-form');
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
-
-console.log(user, 'user');
 
 window.addEventListener('load', async () => {
     const user2 = await getProfileById(id);
@@ -92,7 +90,7 @@ bioForm.addEventListener('submit', async (e) => {
         profileObject.avatar_url = profileinfo.data.avatar_url;
     }
 
-    await upsertBio(profileObject, id, getUser());
+    await updateBio(profileObject, id, getUser());
     //send profileObject to upsertBio
     bioForm.reset();
     await displayProfile();

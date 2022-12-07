@@ -1,4 +1,4 @@
-import { createNewUser, getUser, uploadImage } from '../fetch-utils.js';
+import { getUser, uploadImage, upsertNewUser } from '../fetch-utils.js';
 
 const usernameForm = document.querySelector('#profile-form');
 
@@ -18,7 +18,8 @@ usernameForm.addEventListener('submit', async (e) => {
         const imagePath = `${user.id}/${imageFile.name}`;
         const url = await uploadImage(imagePath, imageFile);
         profileObject.avatar_url = url;
-        await createNewUser(profileObject, url);
+        const newuser = await upsertNewUser(profileObject);
+        console.log(newuser, 'newuser');
     }
-    location.replace('../');
+    // location.replace('../');
 });

@@ -1,6 +1,6 @@
-const SUPABASE_URL = 'https://zgixhmlshitskkemwyaf.supabase.co';
+const SUPABASE_URL = 'https://uqwstvnsesaenalrdjyp.supabase.co';
 const SUPABASE_KEY =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnaXhobWxzaGl0c2trZW13eWFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxMDgwODYsImV4cCI6MTk4MzY4NDA4Nn0.nMjJ-vp1PSZuD_oT9AQGKADmPu3OCZp9Uf4n2XbaBjQ';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxd3N0dm5zZXNhZW5hbHJkanlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxMDgwMjYsImV4cCI6MTk4MzY4NDAyNn0.bZ660DcBSXEiAg5PHlsCACk9kEfmD8_HYAnhjOB69Vo';
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
@@ -70,17 +70,15 @@ export async function uploadImage(imagePath, imageFile) {
     return url;
 }
 
-export async function createNewUser(user, url) {
-    const response = await client.from('profiles').insert({
-        user_id: client.auth.user().id,
-        username: user.username,
-        bio: user.bio,
-        avatar_url: url,
-    });
+export async function upsertNewUser(profile) {
+    const response = await client
+        .from('profiles')
+        .upsert(profile, { onConflict: 'user_id' })
+        .single();
     return response;
 }
 
-export async function upsertBio(profileObject, id, user) {
+export async function updateBio(profileObject, id, user) {
     const response = await client
         .from('profiles')
         .update({ bio: profileObject.bio, avatar_url: profileObject.avatar_url })
