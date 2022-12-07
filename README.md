@@ -23,3 +23,8 @@ https://zgixhmlshitskkemwyaf.supabase.co/storage/v1/object/public/avatars/324881
         - display all profile info (avatar, bio, rating, username)
         - renderProfile
         - Event listener on profile for stars rating system. increment/decrementStars function (redisplay profile)
+
+## Screenshots
+
+![](/assets/avatars.bucket.png)
+![](/assets/RLS.policies.png)
