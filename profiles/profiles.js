@@ -17,7 +17,14 @@ const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
 
+console.log(user, 'user');
+
 window.addEventListener('load', async () => {
+    const user2 = await getProfileById(id);
+
+    if (user.id === user2.data.user_id) {
+        bioForm.classList.remove('hidden');
+    }
     //if user_id from getUser() is same as user_id from getProfileById
     //bioForm.classList.remove('hidden');
     displayProfile();

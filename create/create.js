@@ -20,4 +20,5 @@ usernameForm.addEventListener('submit', async (e) => {
         profileObject.avatar_url = url;
         await createNewUser(profileObject, url);
     }
+    location.replace('../');
 });
