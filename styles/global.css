@@ -92,6 +92,7 @@ main {
 .card:hover {
     background: rgb(77, 132, 252);
 }
+
 .avatar-home {
     height: 75px;
     max-width: 150px;
@@ -110,9 +111,35 @@ main {
     max-width: 1000px;
 }
 
+.username-h2 {
+    font-size: 5rem;
+    margin-top: 5px;
+    font-weight: bolder;
+    text-decoration: underline;
+    color: white;
+}
+
 #user-h1 {
     font-size: 5rem;
     text-decoration: underline;
     color: white;
     margin: 5px;
+}
+
+.profile-detail {
+    display: flex;
+    justify-content: center;
+    border: solid black 1px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    width: 25%;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+#profiles-main {
+    border: solid black 1px;
+    margin: 5px;
+    padding: 1px;
+    background: rgb(7, 5, 68, 0.5);
+    border-radius: 2rem;
 }
