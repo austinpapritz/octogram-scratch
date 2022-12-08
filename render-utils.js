@@ -26,7 +26,7 @@ export function renderMessages(messages) {
 
     ul.classList.add('messages-ul');
 
-    for (let i = 0; i < messages.length; i++) {
+    for (let i = messages.length - 1; i > -1; i--) {
         const li = document.createElement('li');
         li.classList.add('message-li');
 
