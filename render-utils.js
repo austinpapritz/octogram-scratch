@@ -1,4 +1,4 @@
-export function renderProfiles(profile) {
+export function renderProfiles(profile, checkUser) {
     const linkA = document.createElement('a');
     const imgEl = document.createElement('img');
     const usernameP = document.createElement('p');
@@ -13,6 +13,10 @@ export function renderProfiles(profile) {
     usernameP.textContent = `${profile.username}`;
     usernameP.classList.add('username-home');
 
+    if (profile.username === checkUser.username) {
+        usernameP.classList.add('username-star');
+    }
+
     linkA.append(imgEl, usernameP);
     return linkA;
 }
@@ -20,20 +24,18 @@ export function renderProfiles(profile) {
 export function renderMessages(messages) {
     const ul = document.createElement('ul');
 
-    ul.classList.add('messages');
+    ul.classList.add('messages-ul');
 
     for (let i = 0; i < messages.length; i++) {
-        // for (let i = profile.messages.length - 1; i > -1; i--)
-        //console.log('i', profile.messages[i]);
-        const li = document.createElement('p');
-        li.classList.add('message');
+        const li = document.createElement('li');
+        li.classList.add('message-li');
 
         const div = document.createElement('div');
         div.classList.add('message-info');
 
         const senderSpan = document.createElement('span');
-        senderSpan.classList.add('from');
-        senderSpan.textContent = messages[i].sender;
+        senderSpan.classList.add('sender');
+        senderSpan.textContent = `${messages[i].sender} — `;
 
         const dateSpan = document.createElement('span');
         dateSpan.classList.add('created-date');
@@ -46,7 +48,7 @@ export function renderMessages(messages) {
         });
 
         const text = document.createElement('p');
-        text.classList.add('text');
+        text.classList.add('message-text');
         text.textContent = messages[i].text;
 
         div.append(senderSpan, dateSpan);

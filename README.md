@@ -8,7 +8,6 @@ https://zgixhmlshitskkemwyaf.supabase.co/storage/v1/object/public/avatars/324881
 
 ## New Plan
 
-    - refactor upsert profile
     - create global message board on home page
         -
 

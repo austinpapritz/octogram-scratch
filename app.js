@@ -15,14 +15,8 @@ const user = getUser();
 
 /* Events */
 window.addEventListener('load', async () => {
-    const profiles = await getProfiles();
-
-    for (let profile of profiles.data) {
-        const profileEl = renderProfiles(profile);
-        profileList.append(profileEl);
-    }
-
-    displayMessages();
+    await displayProfiles();
+    await displayMessages();
 
     // onMessage(async (payload) => {
     //     console.log('payload', payload);
@@ -54,9 +48,18 @@ chatForm.addEventListener('submit', async (e) => {
 
 /* Display Functions */
 
+async function displayProfiles() {
+    const profiles = await getProfiles();
+    const checkUser = await getProfile(user.id);
+
+    for (let profile of profiles.data) {
+        const profileEl = renderProfiles(profile, checkUser);
+        profileList.append(profileEl);
+    }
+}
+
 async function displayMessages() {
     const messages = await fetchMessages();
-    console.log('messages', messages);
     messagesContainer.textContent = '';
 
     const messagesEl = renderMessages(messages);
