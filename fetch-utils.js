@@ -94,7 +94,7 @@ export async function updateBio(profileObject, id, user) {
 }
 
 export async function createMessage(message) {
-    const response = client.from('messages').insert(message).single();
+    const response = await client.from('messages').insert(message).single();
     return checkError(response);
 }
 

@@ -113,12 +113,20 @@ main {
     margin: 10px;
 }
 
-.messages-ul:nth-child(odd) {
-    background: rgb(136, 136, 153, 0.75);
+.message-li {
+    padding: 3px;
 }
 
-.messages-ul:nth-child(even) {
-    background: rgba(54, 54, 60, 0.75);
+.message-li:nth-child(odd) {
+    background: rgba(117, 117, 132, 0.9);
+}
+
+.message-li:nth-child(even) {
+    background: rgba(54, 54, 60, 0.9);
+}
+
+.message-li p {
+    margin-bottom: 0;
 }
 
 #chat-form {
