@@ -6,6 +6,8 @@ import { renderProfiles } from './render-utils.js';
 
 /* Get DOM Elements */
 const profileList = document.querySelector('#profile-list');
+const chatForm = document.querySelector('#chat-form');
+
 /* State */
 
 /* Events */
@@ -17,4 +19,9 @@ window.addEventListener('load', async () => {
         profileList.append(profileEl);
     }
 });
+
+chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+});
+
 /* Display Functions */
