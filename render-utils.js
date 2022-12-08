@@ -16,3 +16,5 @@ export function renderProfiles(profile) {
     linkA.append(imgEl, usernameP);
     return linkA;
 }
+
+export function renderMessage(messages) {}

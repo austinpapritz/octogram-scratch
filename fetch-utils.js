@@ -38,6 +38,12 @@ export async function getProfileById(id) {
     return response;
 }
 
+export async function getProfile(user_id) {
+    const response = await client.from('profiles').select('*').match({ user_id }).single();
+    // ({ user_id }) = ({user_id : user_id})
+    return response.data;
+}
+
 export async function incrementStars(id) {
     const profile = await getProfileById(id);
 
@@ -85,4 +91,13 @@ export async function updateBio(profileObject, id, user) {
         .match({ id, user_id: user.id })
         .single();
     return response;
+}
+
+export async function createMessage(message) {
+    const response = client.from('messages').insert(message).single();
+    return checkError(response);
+}
+
+function checkError(response) {
+    return response.error ? console.error(response.error) : response.data;
 }
