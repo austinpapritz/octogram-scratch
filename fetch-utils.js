@@ -98,6 +98,21 @@ export async function createMessage(message) {
     return checkError(response);
 }
 
+export function onMessage(handleMessage) {
+    client
+        // what table and what rows are we interested in?
+        .from(`messages`)
+        // what type of changes are we interested in?
+        .on('INSERT', handleMessage)
+        // okay do it!
+        .subscribe();
+}
+
+export async function fetchMessages() {
+    const response = await client.from('messages').select('*');
+    return response.data;
+}
+
 function checkError(response) {
     return response.error ? console.error(response.error) : response.data;
 }

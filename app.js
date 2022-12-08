@@ -1,8 +1,8 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { createMessage, getProfile, getProfileById, getProfiles, getUser } from './fetch-utils.js';
-import { renderProfiles } from './render-utils.js';
+import { createMessage, fetchMessages, getProfile, getProfiles, getUser } from './fetch-utils.js';
+import { renderMessages, renderProfiles } from './render-utils.js';
 
 /* Get DOM Elements */
 const profileList = document.querySelector('#profile-list');
@@ -21,6 +21,13 @@ window.addEventListener('load', async () => {
         const profileEl = renderProfiles(profile);
         profileList.append(profileEl);
     }
+
+    displayMessages();
+
+    // onMessage(async (payload) => {
+    //     console.log('payload', payload);
+    //     displayMessages();
+    // });
 });
 
 chatForm.addEventListener('submit', async (e) => {
@@ -46,4 +53,12 @@ chatForm.addEventListener('submit', async (e) => {
 });
 
 /* Display Functions */
-// async function displayMessages() {}
+
+async function displayMessages() {
+    const messages = await fetchMessages();
+    console.log('messages', messages);
+    messagesContainer.textContent = '';
+
+    const messagesEl = renderMessages(messages);
+    messagesContainer.append(messagesEl);
+}
